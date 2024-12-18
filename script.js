@@ -1,6 +1,38 @@
+const buttons = document.querySelectorAll('.choices button');
+const result = document.getElementById('result');
+
 const choices = ['Rock', 'Paper', 'Scissors'];
 
 function getComputerChoice(){
-    const choice = Math.floor((Math.nradom() * 3) + 1);
+    const choice = Math.floor(Math.random() * 3);
     return choices[choice];
 }
+
+function getWinner(userChoice, computerChoice){
+    if (userChoice === computerChoice) {
+        return 'Tie!';
+    } else if (
+        (userChoice === 'rock' && computerChoice === 'Scissors') ||
+        (userChoice === 'paper' && computerChoice === 'Rock') ||
+        (userChoice === 'scissors' && computerChoice === 'Paper')
+    ) {
+        return "You win!";
+    } else {
+        return "You lose!";
+    }
+}
+
+function updateResult(userChoice, computerChoice, gameResult){
+    result.textContent = `You chose ${userChoice}, Computer chose ${computerChoice}. ${gameResult}`;
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', () =>{
+        const userChoice = button.id;
+        console.log(userChoice);
+        const computerChoice = getComputerChoice();
+        console.log(computerChoice);
+        const gameResult = getWinner(userChoice, computerChoice);
+        updateResult(userChoice, computerChoice, gameResult)
+    })
+});
