@@ -12,9 +12,9 @@ function getWinner(userChoice, computerChoice){
     if (userChoice === computerChoice) {
         return 'Tie!';
     } else if (
-        (userChoice === 'rock' && computerChoice === 'Scissors') ||
-        (userChoice === 'paper' && computerChoice === 'Rock') ||
-        (userChoice === 'scissors' && computerChoice === 'Paper')
+        (userChoice === 'Rock' && computerChoice === 'Scissors') ||
+        (userChoice === 'Paper' && computerChoice === 'Rock') ||
+        (userChoice === 'Scissors' && computerChoice === 'Paper')
     ) {
         return "You win!";
     } else {
